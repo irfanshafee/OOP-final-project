@@ -1,4 +1,5 @@
-3import java.util.Scanner;
+import java.util.Map;
+import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -6,6 +7,7 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static final MealLogger mealLogger = new MealLogger();
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final HealthTipProvider healthTipProvider = new HealthTipProvider();
 
     public static void main(String[] args) {
         while (true) {
@@ -23,7 +25,7 @@ public class Main {
                     mealLogger.displayAllMeals();
                     break;
                 case 4:
-                    // Show Health Tips (to be implemented)
+                    showHealthTips();
                     break;
                 case 5:
                     System.out.println("Thank you for using Calorie and Nutrition Tracker!");
@@ -111,5 +113,36 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error occurred while logging meal: " + e.getMessage());
         }
+    }
+
+    private static void showHealthTips() {
+        System.out.println("\n=== Health Tips ===");
+        
+        // Get daily nutritional data
+        double totalProtein = 0;
+        double totalCarbs = 0;
+        double totalFats = 0;
+        
+        for (Meal meal : mealLogger.getMeals()) {
+            NutritionInfo info = meal.getNutritionInfo();
+            totalProtein += info.getProtein();
+            totalCarbs += info.getCarbs();
+            totalFats += info.getFats();
+        }
+        
+        // Calculate percentages against daily targets
+        DailyTarget target = new DailyTarget();
+        double proteinPercentage = (totalProtein / target.getProteinTarget()) * 100;
+        double carbsPercentage = (totalCarbs / target.getCarbsTarget()) * 100;
+        double fatsPercentage = (totalFats / target.getFatsTarget()) * 100;
+        
+        // Get and display relevant tips
+        Map<String, String> tips = healthTipProvider.getRelevantTips(
+            proteinPercentage,
+            carbsPercentage,
+            fatsPercentage
+        );
+        
+        tips.values().forEach(System.out::println);
     }
 }
