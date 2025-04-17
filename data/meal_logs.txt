@@ -1,0 +1,19 @@
+===========================================
+             MEAL LOGS DATABASE
+===========================================
+
+# Data Format:
+# -----------
+# DateTime        : YYYY-MM-DD HH:MM
+# Food Name       : Name of the food item
+# Calories        : kcal
+# Protein         : grams
+# Carbs           : grams
+# Fats            : grams
+# Meal Type       : Category of meal
+
+===========================================
+DateTime            | Food Name            | Calories | Protein |   Carbs |    Fats | Type
+-------------------+----------------------+---------+---------+---------+---------+-------
+2025-04-17 13:31    | salmon               |    41.0 |     4.4 |     0.0 |     2.6 | MEAL
+2025-04-17 13:33    | chicken breast       |    78.2 |    15.5 |     0.0 |     1.8 | MEAL
