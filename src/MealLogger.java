@@ -52,9 +52,15 @@ public class MealLogger implements IMealLogger {
             return;
         }
 
-        System.out.println("===== All Logged Meals =====");
+        System.out.println("=== Logged Meals ===");
+        int mealNumber = 1;
         for (Meal meal : meals) {
-            System.out.println("\n" + meal.toString());
+            System.out.printf("%d. %s - %s - %s - %.0f kcal\n",
+                mealNumber++,
+                meal.getName(),
+                "100g", // This should be replaced with actual portion size when available
+                meal.getDateTime(),
+                meal.getCalories());
         }
     }
 }
