@@ -70,8 +70,35 @@ It is a comprehensive nutrition and meal tracking application designed to empowe
 - Separate files for meal logs and daily summaries
 - Structured data format for easy parsing and analysis
 
+### SOLID Principles Implementation
+
+1. **Single Responsibility Principle (SRP)**
+   - MealLogger class focuses solely on meal logging operations
+   - NutritionInfo class handles only nutritional calculations
+   - DailyTarget class manages exclusively goal-related functionality
+
+2. **Open-Closed Principle (OCP)**
+   - IHealthTipProvider interface allows adding new tip providers without modifying existing code
+   - MealType enum enables adding new meal categories without changing core logic
+   - Extensible logging system through IMealLogger interface
+
+3. **Liskov Substitution Principle (LSP)**
+   - All implementations of IMealLogger can be used interchangeably
+   - Different HealthTipProvider implementations maintain consistent behavior
+   - Meal subclasses preserve base class contracts
+
+4. **Interface Segregation Principle (ISP)**
+   - IMealLogger interface focused on core logging operations
+   - IHealthTipProvider contains only tip-related methods
+   - Clean separation between meal logging and health tip functionalities
+
+5. **Dependency Inversion Principle (DIP)**
+   - High-level modules depend on IMealLogger abstraction
+   - FoodDatabase accessed through interfaces rather than concrete implementations
+   - HealthTipProvider system depends on abstractions for flexibility
+
 ### Design Patterns
-- Interface-based design for flexibility and maintainability
-- Separation of concerns between components
-- Single Responsibility Principle in class design
-- Observer pattern for nutritional goal tracking
+- Observer pattern for tracking nutritional goals
+- Factory pattern for creating different meal types
+- Strategy pattern in health tip generation
+- Repository pattern for data persistence
