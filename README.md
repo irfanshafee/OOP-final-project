@@ -1,4 +1,4 @@
-# Savour the Flavour of Health
+# Basic Health Tracker
 
 ## Project Overview
 It is a comprehensive nutrition and meal tracking application designed to empower users in making informed dietary choices. The project aims to transform the way people approach their daily nutrition by providing detailed insights into their eating habits, helping them maintain a balanced diet, and promoting overall health and wellness through mindful eating.
